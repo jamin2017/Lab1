@@ -14,7 +14,7 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.Comparator;
 public class DGraph {
-	//ÁÚ½Ó±íÁ´±í½Úµã
+	//ï¿½Ú½Ó±ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
 	private class ENode{
 		int num;
 		int cost;
@@ -23,13 +23,13 @@ public class DGraph {
 		ENode nextEdge;
 	}
 	
-	//ÁÚ½Ó±í¶¥µã
+	//ï¿½Ú½Ó±ï¿½ï¿½ï¿½
 	private class VNode{
 		String word;
 		ENode firstEdge;
 	}
 	
-	//×î¶ÌÂ·¸÷½Úµã¾àÀë
+	//ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½
 	private class Node{
 		int id;
 		int cost = 100000;
@@ -40,9 +40,9 @@ public class DGraph {
 	private int elen;
 	private ArrayList<VNode> Vlist = new ArrayList<VNode>();
 	
-	//¶ÁÈ¡ÎÄ¼þ
+	//ï¿½ï¿½È¡ï¿½Ä¼ï¿½
 	public static int readFile(String filePath) throws Exception {
-		int i = 0;//ÓÐÐ§Ó¢ÎÄµ¥´ÊÊý(º¬ÖØ¸´)
+		int i = 0;//ï¿½ï¿½Ð§Ó¢ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ø¸ï¿½)
 		String result=null;
 		File file=new File(filePath);
 		FileReader fileReader=null;
@@ -56,8 +56,8 @@ public class DGraph {
 					line.toLowerCase();
 					result=result+line+"\r\n";
 				}
-				String reg1 = "\\s+";//s±íÊ¾¿Õ¸ñ¡¢»Ø³µ¡¢»»ÐÐµÈ¿Õ°×·û
-				String reg2 = "\\w+";//w±íÊ¾µ¥´Ê×Ö·û(Êý×Ö×ÖÄ¸ÏÂ»®Ïß)
+				String reg1 = "\\s+";//sï¿½ï¿½Ê¾ï¿½Õ¸ñ¡¢»Ø³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÈ¿Õ°×·ï¿½
+				String reg2 = "\\w+";//wï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½Â»ï¿½ï¿½ï¿½)
 				String str[] = result.split(reg1);
 				for(String s:str) {
 					if(s.matches(reg2)) {
@@ -82,14 +82,14 @@ public class DGraph {
 		return i;
 	}
 	
-	//°´×Ö·û¶ÁÈ¡ÎÄ¼þ
+	//ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½È¡ï¿½Ä¼ï¿½
 	public  static int readFileByChars(String filePath) {
         int i = 0;
 		String result = new String();
         File file = new File(filePath);
         Reader reader = null;
         try{
-            //Ò»´Î¶ÁÒ»¸ö×Ö·û ¿Õ¸ñµÄasciiÂë 32 ´óÐ´×ÖÄ¸65µ½90 Ð¡Ð´×ÖÄ¸97µ½122
+            //Ò»ï¿½Î¶ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ ï¿½Õ¸ï¿½ï¿½asciiï¿½ï¿½ 32 ï¿½ï¿½Ð´ï¿½ï¿½Ä¸65ï¿½ï¿½90 Ð¡Ð´ï¿½ï¿½Ä¸97ï¿½ï¿½122
             reader = new InputStreamReader(new FileInputStream(file));
             int tempchar;
 
@@ -109,8 +109,8 @@ public class DGraph {
         }catch (Exception e) {
             e.printStackTrace();
         }
-        String reg1 = "\\s+";//s±íÊ¾¿Õ¸ñ¡¢»Ø³µ¡¢»»ÐÐµÈ¿Õ°×·û
-        String reg2 = "\\w+";//w±íÊ¾µ¥´Ê×Ö·û(Êý×Ö×ÖÄ¸ÏÂ»®Ïß)
+        String reg1 = "\\s+";//sï¿½ï¿½Ê¾ï¿½Õ¸ñ¡¢»Ø³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÈ¿Õ°×·ï¿½
+        String reg2 = "\\w+";//wï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½Â»ï¿½ï¿½ï¿½)
 		String str[] = result.split(reg1);
 		for(String s:str) {
 			if(s.matches(reg2)) {
@@ -245,7 +245,7 @@ public class DGraph {
 			//System.out.println("The bridge word from "+word1+" to "+word2+" is:"+bridgeWords.get(0)+".");
 			result = result + "The bridge word from " + word1 + " to " + word2 + " is:" + bridgeWords.get(0) + ".";
 		}
-		else if(bridgeNum > 1){
+		else{
 			//System.out.print("The bridge words from "+word1+" to "+word2+" are:"+bridgeWords.get(0)+",");
 			result = result + "The bridge words from " + word1 + " to " + word2 + " are:" + bridgeWords.get(0) + ",";
 			for(int i=1;i<bridgeNum-1;i++) {
@@ -259,7 +259,7 @@ public class DGraph {
 	}
 	
 	public String generateNewText(String inputText) {
-		String reg1 = "\\s+";//s±íÊ¾¿Õ¸ñ¡¢»Ø³µ¡¢»»ÐÐµÈ¿Õ°×·û
+		String reg1 = "\\s+";//sï¿½ï¿½Ê¾ï¿½Õ¸ñ¡¢»Ø³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÈ¿Õ°×·ï¿½
 		String str[] = inputText.split(reg1);
 		//ArrayList<String> list = new ArrayList<String>();
 		String newText = new String();
@@ -268,7 +268,7 @@ public class DGraph {
 			wordsNum++;
 		}
 		for(int i=0;i<wordsNum-1;i++) {
-			//Çó´ÊÇÅ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½
 			int p1,p2;
 			int flag1=0,flag2=0;
 			String s1 = str[i];
@@ -297,7 +297,7 @@ public class DGraph {
 					}
 				}
 			}
-			//½«´ÊÇÅ¼ÓÈë
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Å¼ï¿½ï¿½ï¿½
 			if(bridgeNum == 0) {
 				newText = newText + str[i] + " ";
 			}
@@ -312,7 +312,7 @@ public class DGraph {
 		return newText;
 	}
 	
-	//ÊäÈëÁ½¸öµ¥´Ê
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String calcShortestPath(String word1,String word2){
 		String result = new String();
 		int p1,p2;
@@ -328,11 +328,11 @@ public class DGraph {
 		}
 		
 		if(p1>=vlen || p2>=vlen) {
-			result = "²»¿É´ï";
+			result = "ï¿½ï¿½ï¿½É´ï¿½";
 			return result;
 		}
 		
-		int[][] path = new int[vlen][vlen];//¸¸½Úµã
+		int[][] path = new int[vlen][vlen];//ï¿½ï¿½ï¿½Úµï¿½
 		int[] visit = new int[vlen];
 		ArrayList<Node> dist = new ArrayList<Node>();
 		Node distNode;
@@ -408,7 +408,7 @@ public class DGraph {
 		}
 		
 		if(path[p2][0]==-1) {
-			result = "²»¿É´ï";
+			result = "ï¿½ï¿½ï¿½É´ï¿½";
 			return result;
 		}
 		
@@ -423,7 +423,7 @@ public class DGraph {
 	public void getSinglePath(int index,StringBuilder s,String locS,int path[][],int end) {
 		for(int i=0;i<vlen;i++) {
 			//System.out.println(index+" "+vlen);
-			//System.out.println("µ±Ç°"+Vlist.get(index).word);
+			//System.out.println("ï¿½ï¿½Ç°"+Vlist.get(index).word);
 			if(path[index][0]==-1) {
 				//s = "\n" + Vlist.get(index).word + "->" + locS + s;
 				s.insert(0, "\n" + Vlist.get(index).word + "->" + locS);
@@ -446,7 +446,7 @@ public class DGraph {
 		}
 	}
 	
-	//ÊäÈëÒ»¸öµ¥´Ê
+	//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String calcShortestPath(String word) {
 		String result = new String();
 		int p;
@@ -457,11 +457,11 @@ public class DGraph {
 		}
 		
 		if(p>=vlen) {
-			result = "²»¿É´ï";
+			result = "ï¿½ï¿½ï¿½É´ï¿½";
 			return result;
 		}
 		
-		int[] path = new int[vlen];//¸¸½Úµã
+		int[] path = new int[vlen];//ï¿½ï¿½ï¿½Úµï¿½
 		int[] visit = new int[vlen];
 		ArrayList<Node> dist = new ArrayList<Node>();
 		Node distNode;
@@ -556,7 +556,7 @@ public class DGraph {
 		Path[0] = startIndex;
 		edge = Vlist.get(startIndex).firstEdge;
 		foreEdge = Vlist.get(startIndex).firstEdge;
-		//ÅÐ¶ÏÌõ¼þ³öÏÖµÚÒ»ÌõÖØ¸´µÄ±ß»ò½øÈëµÄÄ³¸ö½Úµã²»´æÔÚ³ö±ß
+		//ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½Ò»ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½Ä±ß»ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Úµã²»ï¿½ï¿½ï¿½Ú³ï¿½ï¿½ï¿½
 		while(edge!=null && edge.visit == 0) {
 			while(edge.nextEdge!=null) {
 				double randomNum = Math.random();
@@ -581,11 +581,11 @@ public class DGraph {
 			edge.visit = 1;
 			edge = Vlist.get(edge.num).firstEdge;
 		}
-		if(edge!=null) {//ÒÔÖØ¸´±ß½áÊøËæ»úÂ·¾¶
+		if(edge!=null) {//ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
 			//System.out.print(Vlist.get(edge.num).word);
 			s = s + Vlist.get(edge.num).word;
 		}
-		//³õÊ¼»¯visitÎª0
+		//ï¿½ï¿½Ê¼ï¿½ï¿½visitÎª0
 		for(int i=0;i<vlen;i++) {
 			edge = Vlist.get(i).firstEdge;
 			while(edge!=null) {
@@ -598,7 +598,7 @@ public class DGraph {
 			System.out.println(Path[i]);
 		}
 		
-	    //ÆðÊ¼½ÚµãÌî³äÑÕÉ«±êÃ÷
+	    //ï¿½ï¿½Ê¼ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½
 		gv.addln(Vlist.get(Path[0]).word+"[style=\"filled\",fillcolor=\"chartreuse\"];");
 		for(int i = 0;i<vlen;i++) {
 	    	  String p1,p2;
