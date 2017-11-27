@@ -1,4 +1,4 @@
-package jamin_lab1;
+package entity;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -13,7 +13,6 @@ public class GraphViz {
 	 /**
 	    * The dir. where temporary files will be created.
 	    */
-	//绝对路径
 	   //private static String TEMP_DIR = "/tmp"; // Linux
 	   private static String TEMP_DIR = "c:/temp"; // Windows
 

@@ -1,15 +1,21 @@
+package TestW;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import entity.BridgeWord;
+import entity.DGraph;
 
 public class testcase2 {
 
 	@Test
 	public void testQueryBridgeWords() throws Exception {
-		DGraph graph= new DGraph("E:\\JAVA\\project1\\Sentence.txt");
-		String result=graph.queryBridgeWords("the", "adf");
-		System.out.println(result);
-		assertEquals("No the or adf in the graph!",result);
+		DGraph G= new DGraph("src/TestW/WhiteBox.txt");
+		BridgeWord BW = new BridgeWord();
+		BW.queryBridgeWords("the", "adf", G.getVlist(), G.getVlen());
+		String word = BW.getWords();
+		assertEquals("No the or adf in the graph!",word);
 	}
 
 }

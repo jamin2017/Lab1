@@ -1,3 +1,5 @@
+package TestW;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -12,6 +14,6 @@ import org.junit.runners.Suite.SuiteClasses;
 	testcase6.class,
 	testcase7.class
 	})
-public class AllTests {
+public class WhiteAllTests {
 
 }
